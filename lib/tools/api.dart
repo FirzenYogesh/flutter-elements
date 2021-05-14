@@ -29,7 +29,7 @@ class ApiHelper {
   /// @param body     body of the request, used for [PUT, POST] requests
   /// @param query    query parameters
   /// @param headers  headers that is needed for the request
-  Future<Model> request(String path, HTTP_METHOD method,
+  Future<http.Response> request(String path, HTTP_METHOD method,
       {String body = "",
       String params = "",
       String query = "",
@@ -51,6 +51,6 @@ class ApiHelper {
       response = await http.get(finalizedUrl, headers: headers);
     }
 
-    return Model(response);
+    return response;
   }
 }
