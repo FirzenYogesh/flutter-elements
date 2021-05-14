@@ -46,11 +46,8 @@ class _HomePageBottomNavigationBar extends State<HomePageBottomNavigationBar> {
               ? widget.pages[_selectedIndex]
               : Center(child: Text("Page $_selectedIndex"))),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor:
-            widget.selectedItemColor != null ? widget.selectedItemColor : null,
-        unselectedItemColor: widget.unselectedItemColor != null
-            ? widget.unselectedItemColor
-            : null,
+        selectedItemColor: widget.selectedItemColor,
+        unselectedItemColor: widget.unselectedItemColor,
         items: widget.items,
         type: widget.bottomNavigationBarType != null
             ? widget.bottomNavigationBarType
