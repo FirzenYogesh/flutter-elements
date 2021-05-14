@@ -51,7 +51,6 @@ class ApiHelper {
       response = await http.get(finalizedUrl, headers: headers);
     }
 
-    return Model(response.statusCode, response.reasonPhrase, response.body,
-        response.headers);
+    return Model(response);
   }
 }
