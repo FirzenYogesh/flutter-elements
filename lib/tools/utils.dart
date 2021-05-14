@@ -1,8 +1,12 @@
 import 'package:multicast_dns/multicast_dns.dart';
+import 'package:flutter/foundation.dart';
 
 enum Environment { DEV, RELEASE }
 
 class Utils {
+  /// get ip for hostname
+  /// mostly used for android since Bonjour service is not available natively
+  /// Other OS can skip it if using hostname.local
   static Future<String> getIpForHostname(String hostname) async {
     String hostIp = "";
     final MDnsClient client = MDnsClient();
@@ -29,11 +33,13 @@ class Utils {
     return hostIp;
   }
 
+  /// check the string for falsy
   static bool isStringEmpty(String str) {
     return ["", null, false, 0].contains(str);
     // return str?.isEmpty ?? true;
   }
 
+  /// check the string for truthy (inverse of isStringEmpty)
   static bool isStringNotEmpty(String str) {
     return !isStringEmpty(str);
     // return str?.isNotEmpty ?? true;
@@ -43,5 +49,7 @@ class Utils {
     return Uri.encodeFull(component);
   }
 
-  static Environment env = Environment.DEV;
+  /// Default values are taken from 'kDebugMode'
+  /// Can be overridden by setting value
+  static Environment env = kDebugMode ? Environment.DEV : Environment.RELEASE;
 }

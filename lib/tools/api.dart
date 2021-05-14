@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:elements/tools/utils.dart';
 import 'package:http/http.dart' as http;
 
 enum HTTP_METHOD {
@@ -15,16 +16,26 @@ class ApiHelper {
 
   ApiHelper(this.localUrl, this.productionUrl);
 
-  static ApiHelper get(String localUrl, String productionUrl) {
-    return ApiHelper(localUrl, productionUrl);
+  /// base url based on the environment; override by setting Utils.env
+  String get baseUrl {
+    if (Utils.env == Environment.DEV) {
+      return localUrl;
+    }
+    return productionUrl;
   }
 
-  request(String url, HTTP_METHOD method,
+  /// make request
+  /// @param path     the path of the api endpoint [required]
+  /// @param method   the http method [required]
+  /// @param body     body of the request, used for [PUT, POST] requests
+  /// @param query    query parameters
+  /// @param headers  headers that is needed for the request
+  request(String path, HTTP_METHOD method,
       {String body = "",
       String params = "",
       String query = "",
       Map<String, String> headers}) async {
-    String finalizedUrl = url;
+    String finalizedUrl = "$baseUrl/$path";
     if (params != "") {
       finalizedUrl += "/$params";
     }
