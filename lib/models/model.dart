@@ -7,6 +7,7 @@ class Model {
   int _statusCode;
   String _reasonPhrase;
   String _body;
+  Map<String, dynamic> _jsonBody;
   Map<String, String> _headers;
 
   Model(Response response) {
@@ -16,8 +17,16 @@ class Model {
     _headers = response.headers;
   }
 
+  Model.fromJson(Map<String, dynamic> json) {
+    _jsonBody = json;
+  }
+
   Map<String, dynamic> _getJson() {
-    if (_headers["content-type"].contains("application/json")) {
+    if (_jsonBody != null && _jsonBody.isNotEmpty) {
+      return _jsonBody;
+    } else if (_headers != null &&
+        _headers.isNotEmpty &&
+        _headers["content-type"].contains("application/json")) {
       return json.decode(_body);
     }
     throw UnsupportedError("Model: The response data is not a json type");
