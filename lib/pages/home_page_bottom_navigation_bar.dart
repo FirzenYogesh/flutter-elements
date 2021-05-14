@@ -5,14 +5,16 @@ class HomePageBottomNavigationBar extends StatefulWidget {
   final BottomNavigationBarType bottomNavigationBarType;
   final List<Widget> pages;
   final AppBar appBar;
+  final Color selectedItemColor;
 
-  const HomePageBottomNavigationBar(
-      {Key key,
-      this.items,
-      this.pages,
-      this.bottomNavigationBarType,
-      this.appBar})
-      : super(key: key);
+  const HomePageBottomNavigationBar({
+    Key key,
+    this.items,
+    this.pages,
+    this.bottomNavigationBarType,
+    this.appBar,
+    this.selectedItemColor,
+  }) : super(key: key);
   @override
   _HomePageBottomNavigationBar createState() => _HomePageBottomNavigationBar();
 }
@@ -42,6 +44,9 @@ class _HomePageBottomNavigationBar extends State<HomePageBottomNavigationBar> {
               ? widget.pages[_selectedIndex]
               : Center(child: Text("Page $_selectedIndex"))),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: widget.selectedItemColor != null
+            ? widget.selectedItemColor
+            : Theme.of(context).primaryColor,
         items: widget.items,
         type: widget.bottomNavigationBarType != null
             ? widget.bottomNavigationBarType
