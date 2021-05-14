@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:elements/models/model.dart';
 import 'package:elements/tools/utils.dart';
 import 'package:http/http.dart' as http;
 
@@ -30,7 +29,7 @@ class ApiHelper {
   /// @param body     body of the request, used for [PUT, POST] requests
   /// @param query    query parameters
   /// @param headers  headers that is needed for the request
-  request(String path, HTTP_METHOD method,
+  Future<Model> request(String path, HTTP_METHOD method,
       {String body = "",
       String params = "",
       String query = "",
@@ -51,13 +50,8 @@ class ApiHelper {
     } else {
       response = await http.get(finalizedUrl, headers: headers);
     }
-    if (response.statusCode == 200) {
-      print("Response");
-      print(response.body);
-      return json.decode(response.body);
-    } else {
-      throw Exception(
-          'Failed request [${response.statusCode} (${response.reasonPhrase})]\nUrl: $finalizedUrl');
-    }
+
+    return Model(response.statusCode, response.reasonPhrase, response.body,
+        response.headers);
   }
 }
