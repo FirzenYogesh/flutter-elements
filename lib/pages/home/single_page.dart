@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SimpleHomePage extends StatelessWidget {
+class SinglePageHome extends StatelessWidget {
   final Widget title;
   final Widget leadingButton;
   final List<Widget> actions;
   final Widget page;
 
-  const SimpleHomePage({
+  const SinglePageHome({
     Key key,
     this.title,
     this.page,
