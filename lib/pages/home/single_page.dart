@@ -1,3 +1,4 @@
+import 'package:elements/tools/utils.dart';
 import 'package:flutter/material.dart';
 
 class SinglePageHome extends StatelessWidget {
@@ -21,6 +22,10 @@ class SinglePageHome extends StatelessWidget {
           leading: leadingButton,
           actions: actions,
         ),
-        body: SafeArea(child: page));
+        body: SafeArea(
+          child: Utils.isTruthy(page)
+              ? page
+              : Center(child: Text("Single Page Application")),
+        ));
   }
 }
