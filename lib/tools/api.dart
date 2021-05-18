@@ -11,7 +11,7 @@ enum HTTP_METHOD {
   DELETE,
 }
 
-abstract class ApiHelper {
+class ApiHelper {
   Future<http.Response> request(
     String host,
     HTTP_METHOD method, {
