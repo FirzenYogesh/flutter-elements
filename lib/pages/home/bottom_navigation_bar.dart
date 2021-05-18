@@ -42,6 +42,7 @@ class _HomePageBottomNavigationBar extends State<HomePageBottomNavigationBar> {
     return Scaffold(
       appBar: widget.appBar,
       body: SafeArea(
+          minimum: EdgeInsets.symmetric(horizontal: 15),
           child: widget.pages != null
               ? widget.pages[_selectedIndex]
               : Center(child: Text("Page $_selectedIndex"))),

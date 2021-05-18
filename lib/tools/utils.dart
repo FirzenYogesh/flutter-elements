@@ -34,14 +34,14 @@ class Utils {
   }
 
   /// check the string for falsy
-  static bool isStringEmpty(String str) {
-    return ["", null, false, 0].contains(str);
+  static bool isFalsy(Object obj) {
+    return ["", null, false, 0].contains(obj);
     // return str?.isEmpty ?? true;
   }
 
   /// check the string for truthy (inverse of isStringEmpty)
-  static bool isStringNotEmpty(String str) {
-    return !isStringEmpty(str);
+  static bool isTruthy(Object obj) {
+    return !isFalsy(obj);
     // return str?.isNotEmpty ?? true;
   }
 
