@@ -12,13 +12,6 @@ enum HTTP_METHOD {
 }
 
 abstract class ApiHelper {
-  /// make request
-  /// @param url      the base url [required]
-  /// @param method   the http method [required]
-  /// @param path     the path of the api endpoint
-  /// @param body     body of the request, used for [PUT, POST] requests
-  /// @param query    query parameters
-  /// @param headers  headers that is needed for the request
   Future<http.Response> request(
     String host,
     HTTP_METHOD method, {
