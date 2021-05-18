@@ -20,39 +20,51 @@ abstract class ApiHelper {
   /// @param query    query parameters
   /// @param headers  headers that is needed for the request
   Future<http.Response> request(
-    String baseUrl,
+    String host,
     HTTP_METHOD method, {
+    String scheme = "https",
+    int port = 443,
     String path,
-    String body,
+    dynamic body,
     String params,
     Map<String, dynamic> query,
     Map<String, String> headers,
     Encoding encoding,
   }) async {
-    String finalizedUrl = "$baseUrl/$path";
-    if (Utils.isTruthy(params)) {
-      finalizedUrl += "/$params";
+    if (Utils.isFalsy(host)) {
+      throw Exception("ApiHelper: Invalid Host");
     }
-    if (Utils.isTruthy(query)) {
-      finalizedUrl += "?${Uri(queryParameters: query)}";
-    }
-    print("Making $method Request to $finalizedUrl");
+    Uri uri = Uri(
+      host: host,
+      path: path,
+      queryParameters: query,
+      scheme: scheme,
+      port: port,
+    );
+    return requestFromUri(uri, method,
+        body: body, headers: headers, encoding: encoding);
+  }
+
+  Future<http.Response> requestFromUri(Uri uri, HTTP_METHOD method,
+      {dynamic body, Map<String, String> headers, Encoding encoding}) async {
+    String url = uri.toString();
+    print("Making $method Request to $url");
     http.Response response;
     if (method == HTTP_METHOD.POST) {
-      response = await http.post(finalizedUrl,
+      response = await http.post(url,
           body: body, headers: headers, encoding: encoding);
     } else if (method == HTTP_METHOD.PUT) {
-      response = await http.put(finalizedUrl,
-          body: body, headers: headers, encoding: encoding);
+      response =
+          await http.put(url, body: body, headers: headers, encoding: encoding);
     } else if (method == HTTP_METHOD.DELETE) {
-      response = await http.delete(finalizedUrl, headers: headers);
+      response = await http.delete(url, headers: headers);
     } else if (method == HTTP_METHOD.PATCH) {
-      response = await http.patch(finalizedUrl,
+      response = await http.patch(url,
           body: body, headers: headers, encoding: encoding);
     } else if (method == HTTP_METHOD.HEAD) {
-      http.head(finalizedUrl, headers: headers);
+      http.head(url, headers: headers);
     } else {
-      response = await http.get(finalizedUrl, headers: headers);
+      response = await http.get(url, headers: headers);
     }
     return response;
   }
