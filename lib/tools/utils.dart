@@ -52,4 +52,6 @@ class Utils {
   /// Default values are taken from 'kDebugMode'
   /// Can be overridden by setting value
   static Environment env = kDebugMode ? Environment.DEV : Environment.RELEASE;
+
+  static bool isDevMode = env == Environment.DEV;
 }
