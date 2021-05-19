@@ -19,7 +19,6 @@ class ApiHelper {
     int port = 443,
     String path,
     dynamic body,
-    String params,
     Map<String, dynamic> query,
     Map<String, String> headers,
     Encoding encoding,
