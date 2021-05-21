@@ -39,7 +39,8 @@ class ApiHelper {
 
   Future<http.Response> requestFromUri(Uri uri, HTTP_METHOD method,
       {dynamic body, Map<String, String> headers, Encoding encoding}) async {
-    String url = uri.toString();
+    // var url = uri.toString();
+    var url = uri;
     print("Making $method Request to $url");
     http.Response response;
     if (method == HTTP_METHOD.POST) {
