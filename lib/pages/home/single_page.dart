@@ -6,6 +6,7 @@ class SinglePageHome extends StatelessWidget {
   final Widget leadingButton;
   final List<Widget> actions;
   final Widget page;
+  final AppBar appBar;
 
   const SinglePageHome({
     Key key,
@@ -13,15 +14,20 @@ class SinglePageHome extends StatelessWidget {
     this.page,
     this.leadingButton,
     this.actions,
+    this.appBar,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    AppBar appBar = this.appBar;
+    if (Utils.isFalsy(appBar)) {
+      appBar = AppBar(
+        title: title,
+        leading: leadingButton,
+        actions: actions,
+      );
+    }
     return Scaffold(
-        appBar: AppBar(
-          title: title,
-          leading: leadingButton,
-          actions: actions,
-        ),
+        appBar: appBar,
         body: SafeArea(
           child: Utils.isTruthy(page)
               ? page
