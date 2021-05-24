@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class AutoSizeText extends StatelessWidget {
@@ -13,40 +14,55 @@ class AutoSizeText extends StatelessWidget {
   final TextHeightBehavior textHeightBehavior;
   final double textScaleFactor;
   final TextWidthBasis textWidthBasis;
+  final bool isSelectable;
 
-  AutoSizeText(this.text,
-      {Key key,
-      this.textAlign,
-      this.textStyle,
-      this.maxLines,
-      this.textOverflow,
-      this.semanticsLabel,
-      this.softWrap,
-      this.strutStyle,
-      this.textDirection,
-      this.textHeightBehavior,
-      this.textScaleFactor,
-      this.textWidthBasis})
-      : super(key: key);
+  AutoSizeText(
+    this.text, {
+    Key key,
+    this.textAlign,
+    this.textStyle,
+    this.maxLines,
+    this.textOverflow,
+    this.semanticsLabel,
+    this.softWrap,
+    this.strutStyle,
+    this.textDirection,
+    this.textHeightBehavior,
+    this.textScaleFactor,
+    this.textWidthBasis,
+    this.isSelectable = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FittedBox(
       fit: BoxFit.contain,
-      child: Text(
-        text,
-        maxLines: maxLines,
-        overflow: textOverflow,
-        semanticsLabel: semanticsLabel,
-        softWrap: softWrap,
-        strutStyle: strutStyle,
-        textDirection: textDirection,
-        textHeightBehavior: textHeightBehavior,
-        textScaleFactor: textScaleFactor,
-        textWidthBasis: textWidthBasis,
-        textAlign: textAlign,
-        style: textStyle,
-      ),
+      child: isSelectable
+          ? SelectableText(
+              text,
+              maxLines: maxLines,
+              strutStyle: strutStyle,
+              textDirection: textDirection,
+              textHeightBehavior: textHeightBehavior,
+              textScaleFactor: textScaleFactor,
+              textWidthBasis: textWidthBasis,
+              textAlign: textAlign,
+              style: textStyle,
+            )
+          : Text(
+              text,
+              maxLines: maxLines,
+              overflow: textOverflow,
+              semanticsLabel: semanticsLabel,
+              softWrap: softWrap,
+              strutStyle: strutStyle,
+              textDirection: textDirection,
+              textHeightBehavior: textHeightBehavior,
+              textScaleFactor: textScaleFactor,
+              textWidthBasis: textWidthBasis,
+              textAlign: textAlign,
+              style: textStyle,
+            ),
     );
   }
 }
