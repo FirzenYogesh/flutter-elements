@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   multicast_dns: ^0.3.0
   http: ^0.13.3
+  sembast: ^3.0.2
 
 dev_dependencies:
   flutter_test:
