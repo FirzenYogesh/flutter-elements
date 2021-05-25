@@ -18,7 +18,7 @@ class SinglePageHome extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    AppBar appBar = this.appBar;
+    var appBar = this.appBar;
     if (Utils.isFalsy(appBar)) {
       appBar = AppBar(
         title: title,
@@ -31,7 +31,7 @@ class SinglePageHome extends StatelessWidget {
         body: SafeArea(
           child: Utils.isTruthy(page)
               ? page
-              : Center(child: Text("Single Page Application")),
+              : Center(child: Text('Single Page Application')),
         ));
   }
 }

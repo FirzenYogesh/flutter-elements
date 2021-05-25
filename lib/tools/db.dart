@@ -18,7 +18,7 @@ class DB {
   StoreRef get collection => _getCollection(collectionName);
 
   DB({
-    this.dbPath = "database.db",
+    this.dbPath = 'database.db',
     this.version = 1,
     this.collectionName,
     this.password,
@@ -33,14 +33,14 @@ class DB {
     return _opened;
   }
 
-  close() async {
+  Future<dynamic> close() async {
     if (isOpened) {
       return _db.close();
     }
   }
 
   StoreRef _getCollection(String collectionName) {
-    String table = collectionName;
+    var table = collectionName;
     if (Utils.isFalsy(table)) {
       table = this.collectionName;
     }
@@ -59,24 +59,24 @@ class DB {
     return store;
   }
 
-  find(
+  Future<List<RecordSnapshot>> find(
     Filter filter,
     List<SortOrder> sortOrders, {
     String collectionName,
   }) async {
-    StoreRef store = _getCollection(collectionName);
+    var store = _getCollection(collectionName);
     var finder = Finder(filter: filter, sortOrders: sortOrders);
     return await store.find(db, finder: finder);
   }
 
-  insert(
+  Future<dynamic> insert(
     dynamic key,
     dynamic value, {
     bool merge = true,
     String collectionName,
     bool useTransaction = false,
   }) async {
-    StoreRef store = _getCollection(collectionName);
+    var store = _getCollection(collectionName);
     if (useTransaction) {
       return await db.transaction((transaction) async =>
           await store.record(key).put(transaction, value, merge: merge));
@@ -85,12 +85,12 @@ class DB {
     }
   }
 
-  delete(
+  Future<dynamic> delete(
     dynamic key, {
     String collectionName,
     bool useTransaction = false,
   }) async {
-    StoreRef store = _getCollection(collectionName);
+    var store = _getCollection(collectionName);
     if (useTransaction) {
       return await db.transaction(
           (transaction) async => await store.record(key).delete(transaction));
@@ -99,13 +99,13 @@ class DB {
     }
   }
 
-  update(
+  Future<int> update(
     dynamic value, {
     String collectionName,
     bool useTransaction = false,
     Filter filter,
   }) async {
-    StoreRef store = _getCollection(collectionName);
+    var store = _getCollection(collectionName);
     if (useTransaction) {
       return await db.transaction((transaction) async => await store
           .update(transaction, value, finder: Finder(filter: filter)));

@@ -26,10 +26,10 @@ class Model {
       return _jsonBody;
     } else if (_headers != null &&
         _headers.isNotEmpty &&
-        _headers["content-type"].contains("application/json")) {
+        _headers['content-type'].contains('application/json')) {
       return json.decode(_body);
     }
-    throw UnsupportedError("Model: The response data is not a json type");
+    throw UnsupportedError('Model: The response data is not a json type');
   }
 
   //getters

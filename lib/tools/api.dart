@@ -15,7 +15,7 @@ class ApiHelper {
   Future<http.Response> request(
     String host,
     HTTP_METHOD method, {
-    String scheme = "https",
+    String scheme = 'https',
     int port = 443,
     String path,
     dynamic body,
@@ -24,9 +24,9 @@ class ApiHelper {
     Encoding encoding,
   }) async {
     if (Utils.isFalsy(host)) {
-      throw Exception("ApiHelper: Invalid Host");
+      throw Exception('ApiHelper: Invalid Host');
     }
-    Uri uri = Uri(
+    var uri = Uri(
       host: host,
       path: path,
       queryParameters: query,
@@ -41,7 +41,7 @@ class ApiHelper {
       {dynamic body, Map<String, String> headers, Encoding encoding}) async {
     // var url = uri.toString();
     var url = uri;
-    print("Making $method Request to $url");
+    print('Making $method Request to $url');
     http.Response response;
     if (method == HTTP_METHOD.POST) {
       response = await http.post(url,
@@ -55,7 +55,7 @@ class ApiHelper {
       response = await http.patch(url,
           body: body, headers: headers, encoding: encoding);
     } else if (method == HTTP_METHOD.HEAD) {
-      http.head(url, headers: headers);
+      response = await http.head(url, headers: headers);
     } else {
       response = await http.get(url, headers: headers);
     }

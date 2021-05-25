@@ -8,8 +8,8 @@ class Utils {
   /// mostly used for android since Bonjour service is not available natively
   /// Other OS can skip it if using hostname.local
   static Future<String> getIpForHostname(String hostname) async {
-    String hostIp = "";
-    final MDnsClient client = MDnsClient();
+    var hostIp = '';
+    final client = MDnsClient();
     // Start the client with default options.
     await client.start();
 
@@ -35,7 +35,7 @@ class Utils {
 
   /// check the string for falsy
   static bool isFalsy(Object obj) {
-    return ["", null, false, 0].contains(obj);
+    return ['', null, false, 0].contains(obj);
     // return str?.isEmpty ?? true;
   }
 

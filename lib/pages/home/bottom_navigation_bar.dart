@@ -33,7 +33,7 @@ class _HomePageBottomNavigationBar extends State<HomePageBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     if (widget.items == null || widget.items.isEmpty) {
-      throw Exception("HomePageBottomNavigationBar: Missing items");
+      throw Exception('HomePageBottomNavigationBar: Missing items');
     }
     if (widget.pages != null && widget.items.length != widget.pages.length) {
       throw Exception(
@@ -45,14 +45,12 @@ class _HomePageBottomNavigationBar extends State<HomePageBottomNavigationBar> {
           minimum: EdgeInsets.symmetric(horizontal: 15),
           child: widget.pages != null
               ? widget.pages[_selectedIndex]
-              : Center(child: Text("Page $_selectedIndex"))),
+              : Center(child: Text('Page $_selectedIndex'))),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: widget.selectedItemColor,
         unselectedItemColor: widget.unselectedItemColor,
         items: widget.items,
-        type: widget.bottomNavigationBarType != null
-            ? widget.bottomNavigationBarType
-            : BottomNavigationBarType.shifting,
+        type: widget.bottomNavigationBarType ?? BottomNavigationBarType.shifting,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
       ),
