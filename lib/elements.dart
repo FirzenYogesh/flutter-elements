@@ -16,6 +16,9 @@ export 'src/widgets/text/button.dart' show TextB;
 export 'src/widgets/text/overline.dart' show TextOverline;
 export 'src/widgets/bottom_sheet.dart' show BottomSheetView;
 export 'src/widgets/flexible_divider.dart' show FlexibleDivider;
+
+export 'src/widgets/list_view_tile.dart' show ListViewTile;
+
 export 'src/widgets/pages/bottom_navigation_bar.dart'
     show HomePageBottomNavigationBar;
 export 'src/widgets/pages/single_page.dart' show SinglePageHome;
