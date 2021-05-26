@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:elements/widgets/flexible_divider.dart';
+import 'flexible_divider.dart';
 
 class BottomSheetView extends StatelessWidget {
   final Widget child;
