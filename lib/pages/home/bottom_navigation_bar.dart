@@ -50,7 +50,8 @@ class _HomePageBottomNavigationBar extends State<HomePageBottomNavigationBar> {
         selectedItemColor: widget.selectedItemColor,
         unselectedItemColor: widget.unselectedItemColor,
         items: widget.items,
-        type: widget.bottomNavigationBarType ?? BottomNavigationBarType.shifting,
+        type:
+            widget.bottomNavigationBarType ?? BottomNavigationBarType.shifting,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
       ),
