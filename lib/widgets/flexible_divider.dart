@@ -8,7 +8,7 @@ class FlexibleDivider extends StatelessWidget {
   const FlexibleDivider({
     Key key,
     this.width = 70,
-    this.height = 2,
+    this.height = 3,
     this.margin,
   }) : super(key: key);
 

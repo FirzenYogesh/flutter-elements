@@ -26,7 +26,7 @@ class BottomSheetView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          FlexibleDivider(),
+          Center(child: FlexibleDivider()),
           child,
         ],
       ),
