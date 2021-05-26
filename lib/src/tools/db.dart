@@ -1,6 +1,7 @@
-import 'package:elements/tools/utils.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
+
+import 'utils.dart';
 
 class DB {
   final String dbPath;
@@ -40,10 +41,7 @@ class DB {
   }
 
   StoreRef _getCollection(String collectionName) {
-    var table = collectionName;
-    if (Utils.isFalsy(table)) {
-      table = this.collectionName;
-    }
+    var table = collectionName ?? this.collectionName;
 
     StoreRef store;
     if (Utils.isTruthy(table)) {

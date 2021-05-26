@@ -1,4 +1,4 @@
-import 'package:elements/tools/db.dart';
+import 'package:elements/src/tools/db.dart';
 import 'package:sembast/sembast.dart';
 import 'package:test/test.dart';
 
