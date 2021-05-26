@@ -1,6 +1,6 @@
 library elements;
 
-export 'widgets/auto_size_text.dart' show AutoSizeText;
+export 'widgets/text/auto_size_text.dart' show AutoSizeText;
 export 'widgets/text/body_text1.dart' show TextBody1;
 export 'widgets/text/body_text2.dart' show TextBody2;
 export 'widgets/text/headline1.dart' show TextH1;
