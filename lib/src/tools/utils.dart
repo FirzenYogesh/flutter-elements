@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:multicast_dns/multicast_dns.dart';
 import 'package:flutter/foundation.dart';
 
@@ -54,4 +55,13 @@ class Utils {
   static Environment env = kDebugMode ? Environment.DEV : Environment.RELEASE;
 
   static bool isDevMode = env == Environment.DEV;
+
+  static void rebuildAllChildren(BuildContext context) {
+    void rebuild(Element el) {
+      el.markNeedsBuild();
+      el.visitChildren(rebuild);
+    }
+
+    (context as Element).visitChildren(rebuild);
+  }
 }
