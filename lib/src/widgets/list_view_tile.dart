@@ -45,7 +45,7 @@ class ListViewTile extends StatelessWidget {
     textChildren.add(_getExpanded(TextH5(title), 2));
 
     if (Utils.isTruthy(subtitle)) {
-      textChildren.add(_getExpanded(TextSubtitle1(title), 1));
+      textChildren.add(_getExpanded(TextSubtitle1(subtitle), 1));
     }
 
     children.add(_getExpanded(
