@@ -1,5 +1,5 @@
-import 'package:elements/tools/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:elements/widgets/flexible_divider.dart';
 
 class BottomSheetView extends StatelessWidget {
   final Widget child;
@@ -18,10 +18,15 @@ class BottomSheetView extends StatelessWidget {
     return Container(
       width: width ?? MediaQuery.of(context).size.width,
       height: height,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(
+          Radius.circular(50),
+        ),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Divider(),
+          FlexibleDivider(),
           child,
         ],
       ),

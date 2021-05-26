@@ -1,12 +1,11 @@
-import 'package:elements/tools/utils.dart';
 import 'package:flutter/material.dart';
 
-class Divider extends StatelessWidget {
+class FlexibleDivider extends StatelessWidget {
   final double width;
   final double height;
   final EdgeInsets margin;
 
-  const Divider({
+  const FlexibleDivider({
     Key key,
     this.width = 70,
     this.height = 2,
