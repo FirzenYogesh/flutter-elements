@@ -7,8 +7,8 @@ class Model {
   late int _statusCode;
   String? _reasonPhrase;
   late String _body;
-  late Map<String, dynamic> _jsonBody;
-  late Map<String, String> _headers;
+  late Map<String, dynamic>? _jsonBody;
+  late Map<String, String>? _headers;
 
   Model(Response response) {
     _statusCode = response.statusCode;
@@ -22,11 +22,11 @@ class Model {
   }
 
   Map<String, dynamic> _getJson() {
-    if (_jsonBody != null && _jsonBody.isNotEmpty) {
-      return _jsonBody;
+    if (_jsonBody != null && _jsonBody!.isNotEmpty) {
+      return _jsonBody!;
     } else if (_headers != null &&
-        _headers.isNotEmpty &&
-        _headers['content-type']!.contains('application/json')) {
+        _headers!.isNotEmpty &&
+        _headers!['content-type']!.contains('application/json')) {
       return json.decode(_body);
     }
     throw UnsupportedError('Model: The response data is not a json type');
