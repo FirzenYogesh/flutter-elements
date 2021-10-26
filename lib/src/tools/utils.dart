@@ -35,13 +35,13 @@ class Utils {
   }
 
   /// check the string for falsy
-  static bool isFalsy(Object obj) {
+  static bool isFalsy(Object? obj) {
     return ['', null, false, 0].contains(obj);
     // return str?.isEmpty ?? true;
   }
 
   /// check the string for truthy (inverse of isStringEmpty)
-  static bool isTruthy(Object obj) {
+  static bool isTruthy(Object? obj) {
     return !isFalsy(obj);
     // return str?.isNotEmpty ?? true;
   }

@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 
 class TextH6 extends StatelessWidget {
   final String text;
-  final TextAlign textAlign;
-  final TextStyle textStyle;
-  final int maxLines;
-  final TextOverflow textOverflow;
-  final String semanticsLabel;
-  final bool softWrap;
-  final StrutStyle strutStyle;
-  final TextDirection textDirection;
-  final TextHeightBehavior textHeightBehavior;
-  final double textScaleFactor;
-  final TextWidthBasis textWidthBasis;
+  final TextAlign? textAlign;
+  final TextStyle? textStyle;
+  final int? maxLines;
+  final TextOverflow? textOverflow;
+  final String? semanticsLabel;
+  final bool? softWrap;
+  final StrutStyle? strutStyle;
+  final TextDirection? textDirection;
+  final TextHeightBehavior? textHeightBehavior;
+  final double? textScaleFactor;
+  final TextWidthBasis? textWidthBasis;
 
   const TextH6(
     this.text, {
-    Key key,
+    Key? key,
     this.textAlign,
     this.textStyle,
     this.maxLines,
@@ -42,6 +42,6 @@ class TextH6 extends StatelessWidget {
         textScaleFactor: textScaleFactor,
         textWidthBasis: textWidthBasis,
         textAlign: textAlign,
-        style: Theme.of(context).textTheme.headline6.merge(textStyle),
+        style: Theme.of(context).textTheme.headline6?.merge(textStyle),
       );
 }

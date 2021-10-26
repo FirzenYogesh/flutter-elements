@@ -3,12 +3,12 @@ import 'flexible_divider.dart';
 
 class BottomSheetView extends StatelessWidget {
   final Widget child;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
 
   const BottomSheetView({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.width,
     this.height,
   }) : super(key: key);
@@ -17,7 +17,7 @@ class BottomSheetView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width ?? MediaQuery.of(context).size.width,
-      height: height,
+      height: height ?? 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(
           Radius.circular(50),

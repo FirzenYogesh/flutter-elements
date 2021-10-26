@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 
 class TextSubtitle2 extends StatelessWidget {
   final String text;
-  final TextAlign textAlign;
-  final TextStyle textStyle;
-  final int maxLines;
-  final TextOverflow textOverflow;
-  final String semanticsLabel;
-  final bool softWrap;
-  final StrutStyle strutStyle;
-  final TextDirection textDirection;
-  final TextHeightBehavior textHeightBehavior;
-  final double textScaleFactor;
-  final TextWidthBasis textWidthBasis;
+  final TextAlign? textAlign;
+  final TextStyle? textStyle;
+  final int? maxLines;
+  final TextOverflow? textOverflow;
+  final String? semanticsLabel;
+  final bool? softWrap;
+  final StrutStyle? strutStyle;
+  final TextDirection? textDirection;
+  final TextHeightBehavior? textHeightBehavior;
+  final double? textScaleFactor;
+  final TextWidthBasis? textWidthBasis;
 
   const TextSubtitle2(
     this.text, {
-    Key key,
+    Key? key,
     this.textAlign,
     this.textStyle,
     this.maxLines,
@@ -42,6 +42,6 @@ class TextSubtitle2 extends StatelessWidget {
         textScaleFactor: textScaleFactor,
         textWidthBasis: textWidthBasis,
         textAlign: textAlign,
-        style: Theme.of(context).textTheme.subtitle2.merge(textStyle),
+        style: Theme.of(context).textTheme.subtitle2?.merge(textStyle),
       );
 }

@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 
 class TextOverline extends StatelessWidget {
   final String text;
-  final TextAlign textAlign;
-  final TextStyle textStyle;
-  final int maxLines;
-  final TextOverflow textOverflow;
-  final String semanticsLabel;
-  final bool softWrap;
-  final StrutStyle strutStyle;
-  final TextDirection textDirection;
-  final TextHeightBehavior textHeightBehavior;
-  final double textScaleFactor;
-  final TextWidthBasis textWidthBasis;
+  final TextAlign? textAlign;
+  final TextStyle? textStyle;
+  final int? maxLines;
+  final TextOverflow? textOverflow;
+  final String? semanticsLabel;
+  final bool? softWrap;
+  final StrutStyle? strutStyle;
+  final TextDirection? textDirection;
+  final TextHeightBehavior? textHeightBehavior;
+  final double? textScaleFactor;
+  final TextWidthBasis? textWidthBasis;
 
   const TextOverline(
     this.text, {
-    Key key,
+    Key? key,
     this.textAlign,
     this.textStyle,
     this.maxLines,
@@ -42,6 +42,6 @@ class TextOverline extends StatelessWidget {
         textScaleFactor: textScaleFactor,
         textWidthBasis: textWidthBasis,
         textAlign: textAlign,
-        style: Theme.of(context).textTheme.overline.merge(textStyle),
+        style: Theme.of(context).textTheme.overline?.merge(textStyle),
       );
 }

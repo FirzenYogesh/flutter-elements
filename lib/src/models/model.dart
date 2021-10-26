@@ -4,11 +4,11 @@ import 'package:http/http.dart';
 
 /// basic model example
 class Model {
-  int _statusCode;
-  String _reasonPhrase;
-  String _body;
-  Map<String, dynamic> _jsonBody;
-  Map<String, String> _headers;
+  late int _statusCode;
+  String? _reasonPhrase;
+  late String _body;
+  late Map<String, dynamic> _jsonBody;
+  late Map<String, String> _headers;
 
   Model(Response response) {
     _statusCode = response.statusCode;
@@ -26,7 +26,7 @@ class Model {
       return _jsonBody;
     } else if (_headers != null &&
         _headers.isNotEmpty &&
-        _headers['content-type'].contains('application/json')) {
+        _headers['content-type']!.contains('application/json')) {
       return json.decode(_body);
     }
     throw UnsupportedError('Model: The response data is not a json type');
@@ -50,7 +50,7 @@ class Model {
   bool get failed => _statusCode >= 400;
 
   /// get the reason phrase of the request
-  String get reason => _reasonPhrase;
+  String? get reason => _reasonPhrase;
 
   /// get the status code of the request
   int get status => _statusCode;

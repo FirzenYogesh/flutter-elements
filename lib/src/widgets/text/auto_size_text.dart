@@ -3,22 +3,22 @@ import 'package:flutter/widgets.dart';
 
 class AutoSizeText extends StatelessWidget {
   final String text;
-  final TextAlign textAlign;
-  final TextStyle textStyle;
-  final int maxLines;
-  final TextOverflow textOverflow;
-  final String semanticsLabel;
-  final bool softWrap;
-  final StrutStyle strutStyle;
-  final TextDirection textDirection;
-  final TextHeightBehavior textHeightBehavior;
-  final double textScaleFactor;
-  final TextWidthBasis textWidthBasis;
+  final TextAlign? textAlign;
+  final TextStyle? textStyle;
+  final int? maxLines;
+  final TextOverflow? textOverflow;
+  final String? semanticsLabel;
+  final bool? softWrap;
+  final StrutStyle? strutStyle;
+  final TextDirection? textDirection;
+  final TextHeightBehavior? textHeightBehavior;
+  final double? textScaleFactor;
+  final TextWidthBasis? textWidthBasis;
   final bool isSelectable;
 
   AutoSizeText(
     this.text, {
-    Key key,
+    Key? key,
     this.textAlign,
     this.textStyle,
     this.maxLines,

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class HomePageBottomNavigationBar extends StatefulWidget {
-  final List<BottomNavigationBarItem> items;
-  final BottomNavigationBarType bottomNavigationBarType;
-  final List<Widget> pages;
-  final AppBar appBar;
-  final Color selectedItemColor;
-  final Color unselectedItemColor;
+  final List<BottomNavigationBarItem>? items;
+  final BottomNavigationBarType? bottomNavigationBarType;
+  final List<Widget>? pages;
+  final AppBar? appBar;
+  final Color? selectedItemColor;
+  final Color? unselectedItemColor;
 
   const HomePageBottomNavigationBar({
-    Key key,
+    Key? key,
     this.items,
     this.pages,
     this.bottomNavigationBarType,
@@ -32,10 +32,10 @@ class _HomePageBottomNavigationBar extends State<HomePageBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.items == null || widget.items.isEmpty) {
+    if (widget.items == null || widget.items!.isEmpty) {
       throw Exception('HomePageBottomNavigationBar: Missing items');
     }
-    if (widget.pages != null && widget.items.length != widget.pages.length) {
+    if (widget.pages != null && widget.items!.length != widget.pages!.length) {
       throw Exception(
           "HomePageBottomNavigationBar: Pages and Items count doesn't match");
     }
@@ -44,12 +44,12 @@ class _HomePageBottomNavigationBar extends State<HomePageBottomNavigationBar> {
       body: SafeArea(
           minimum: EdgeInsets.symmetric(horizontal: 15),
           child: widget.pages != null
-              ? widget.pages[_selectedIndex]
+              ? widget.pages![_selectedIndex]
               : Center(child: Text('Page $_selectedIndex'))),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: widget.selectedItemColor,
         unselectedItemColor: widget.unselectedItemColor,
-        items: widget.items,
+        items: widget.items!,
         type:
             widget.bottomNavigationBarType ?? BottomNavigationBarType.shifting,
         currentIndex: _selectedIndex,

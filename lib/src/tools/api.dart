@@ -15,13 +15,13 @@ class ApiHelper {
   Future<http.Response> request(
     String host,
     HTTP_METHOD method, {
+    String path = '',
     String scheme = 'https',
     int port = 443,
-    String path,
     dynamic body,
-    Map<String, dynamic> query,
-    Map<String, String> headers,
-    Encoding encoding,
+    Map<String, dynamic>? query,
+    Map<String, String>? headers,
+    Encoding? encoding,
   }) async {
     if (Utils.isFalsy(host)) {
       throw Exception('ApiHelper: Invalid Host');
@@ -38,7 +38,7 @@ class ApiHelper {
   }
 
   Future<http.Response> requestFromUri(Uri uri, HTTP_METHOD method,
-      {dynamic body, Map<String, String> headers, Encoding encoding}) async {
+      {dynamic body, Map<String, String>? headers, Encoding? encoding}) async {
     // var url = uri.toString();
     var url = uri;
     print('Making $method Request to $url');

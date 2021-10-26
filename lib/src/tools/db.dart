@@ -6,11 +6,11 @@ import 'utils.dart';
 class DB {
   final String dbPath;
   final int version;
-  final String password;
-  final String collectionName;
+  final String? password;
+  final String? collectionName;
 
   final DatabaseFactory _dbFactory = databaseFactoryIo;
-  Database _db;
+  late Database _db;
   bool _opened = false;
 
   Database get db => _db;
@@ -40,7 +40,7 @@ class DB {
     }
   }
 
-  StoreRef _getCollection(String collectionName) {
+  StoreRef _getCollection(String? collectionName) {
     var table = collectionName ?? this.collectionName;
 
     StoreRef store;
@@ -50,7 +50,7 @@ class DB {
       // } else {
       //   store = intMapStoreFactory.store(collectionName);
       // }
-      store = StoreRef(collectionName);
+      store = StoreRef(collectionName!);
     } else {
       store = StoreRef.main();
     }
@@ -60,7 +60,7 @@ class DB {
   Future<List<RecordSnapshot>> find(
     Filter filter,
     List<SortOrder> sortOrders, {
-    String collectionName,
+    String? collectionName,
   }) async {
     var store = _getCollection(collectionName);
     var finder = Finder(filter: filter, sortOrders: sortOrders);
@@ -71,7 +71,7 @@ class DB {
     dynamic key,
     dynamic value, {
     bool merge = true,
-    String collectionName,
+    String? collectionName,
     bool useTransaction = false,
   }) async {
     var store = _getCollection(collectionName);
@@ -85,7 +85,7 @@ class DB {
 
   Future<dynamic> delete(
     dynamic key, {
-    String collectionName,
+    String? collectionName,
     bool useTransaction = false,
   }) async {
     var store = _getCollection(collectionName);
@@ -99,9 +99,9 @@ class DB {
 
   Future<int> update(
     dynamic value, {
-    String collectionName,
+    String? collectionName,
     bool useTransaction = false,
-    Filter filter,
+    Filter? filter,
   }) async {
     var store = _getCollection(collectionName);
     if (useTransaction) {
