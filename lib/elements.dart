@@ -1,5 +1,14 @@
 library elements;
 
+import 'package:elements/src/tools/device.dart';
+
+/// elements tools goes here
+export 'src/tools/api.dart' show ApiHelper, HTTP_METHOD;
+export 'src/tools/device.dart' show DeviceUtils;
+export 'src/tools/db.dart' show DB;
+export 'src/tools/utils.dart' show Utils, Environment;
+
+/// elements view goes here
 export 'src/widgets/text/auto_size_text.dart' show AutoSizeText;
 export 'src/widgets/text/body_text1.dart' show TextBody1;
 export 'src/widgets/text/body_text2.dart' show TextBody2;
@@ -22,3 +31,9 @@ export 'src/widgets/list_view_tile.dart' show ListViewTile;
 export 'src/widgets/pages/bottom_navigation_bar.dart'
     show HomePageBottomNavigationBar;
 export 'src/widgets/pages/single_page.dart' show SinglePageHome;
+
+class Elements {
+  static Future<void> initialize() async {
+    await DeviceUtils.initialize();
+  }
+}
