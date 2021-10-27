@@ -29,7 +29,7 @@ class DB {
     this.password,
   });
 
-  static void initialize({
+  static Future<void> initialize({
     dbPath = 'database.db',
     version = 1,
     collectionName,
