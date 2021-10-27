@@ -12,8 +12,13 @@ class DeviceUtils {
   static Future<void> initialize() async {
     var deviceInfo = DeviceInfoPlugin();
     DeviceUtils.instance = DeviceUtils._();
-    DeviceUtils.instance._userAgent =
-        (await deviceInfo.webBrowserInfo).userAgent ?? _defaultUserAgent;
+    try {
+      DeviceUtils.instance._userAgent =
+          (await deviceInfo.webBrowserInfo).userAgent ?? _defaultUserAgent;
+    } catch (_) {
+      DeviceUtils.instance._userAgent = _defaultUserAgent;
+    }
+    ;
   }
 
   String get userAgent => _userAgent;
