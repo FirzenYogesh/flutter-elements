@@ -8,7 +8,7 @@ export 'src/tools/db.dart' show DB;
 export 'src/tools/utils.dart' show Utils, Environment;
 
 class Elements {
-  static void initialize() async {
+  static Future<void> initialize() async {
     await DeviceUtils.initialize();
   }
 }
