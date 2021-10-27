@@ -76,13 +76,20 @@ class DB {
     return store;
   }
 
-  Future<List<RecordSnapshot>> find(
-    Filter filter,
-    List<SortOrder> sortOrders, {
+  Future<List<RecordSnapshot>> find({
+    Filter? filter,
+    List<SortOrder>? sortOrders,
     String? collectionName,
+    int? limit,
+    int? offset,
   }) async {
     var store = _getCollection(collectionName);
-    var finder = Finder(filter: filter, sortOrders: sortOrders);
+    var finder = Finder(
+      filter: filter,
+      sortOrders: sortOrders,
+      limit: limit,
+      offset: offset,
+    );
     return await store.find(db, finder: finder);
   }
 
