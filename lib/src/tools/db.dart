@@ -3,6 +3,9 @@ import 'package:sembast/sembast_io.dart';
 
 import 'utils.dart';
 
+export 'package:sembast/sembast.dart';
+export 'package:sembast/sembast_io.dart';
+
 class DB {
   final String dbPath;
   final int version;
