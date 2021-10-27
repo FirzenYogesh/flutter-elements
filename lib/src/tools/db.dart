@@ -7,6 +7,7 @@ export 'package:sembast/sembast.dart';
 export 'package:sembast/sembast_io.dart';
 
 class DB {
+  static late DB instance;
   final String dbPath;
   final int version;
   final String? password;
@@ -21,12 +22,27 @@ class DB {
 
   StoreRef get collection => _getCollection(collectionName);
 
-  DB({
+  DB._({
     this.dbPath = 'database.db',
     this.version = 1,
     this.collectionName,
     this.password,
   });
+
+  static void initialize({
+    dbPath = 'database.db',
+    version = 1,
+    collectionName,
+    password,
+  }) async {
+    DB.instance = DB._(
+      dbPath: dbPath,
+      version: version,
+      collectionName: collectionName,
+      password: password,
+    );
+    await DB.instance.open();
+  }
 
   Future<bool> open() async {
     _db = await _dbFactory.openDatabase(
