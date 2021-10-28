@@ -5,6 +5,9 @@ import 'utils.dart';
 
 export 'package:sembast/sembast.dart';
 export 'package:sembast/sembast_io.dart';
+export 'package:sembast/timestamp.dart';
+export 'package:sembast/blob.dart';
+export 'package:sembast/sembast_memory.dart';
 
 class DB {
   static late DB instance;
