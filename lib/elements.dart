@@ -5,7 +5,8 @@ import 'package:elements/src/tools/device.dart';
 /// elements tools goes here
 export 'src/tools/api.dart' show ApiHelper, HTTP_METHOD;
 export 'src/tools/device.dart' show DeviceUtils;
-export 'src/tools/db.dart' show DB, Filter, SortOrder, RecordSnapshot;
+export 'src/tools/db.dart'
+    show DB, Filter, SortOrder, RecordSnapshot, Timestamp, Blob;
 export 'src/tools/utils.dart' show Utils, Environment;
 
 /// elements view goes here
