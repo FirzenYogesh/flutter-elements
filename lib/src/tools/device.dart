@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:device_info_plus/device_info_plus.dart';
 
 class DeviceUtils {
@@ -22,4 +24,6 @@ class DeviceUtils {
   }
 
   String get userAgent => _userAgent;
+
+  bool get isMobile => Platform.isIOS || Platform.isAndroid;
 }

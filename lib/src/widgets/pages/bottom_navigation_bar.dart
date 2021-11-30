@@ -17,6 +17,7 @@ class HomePageBottomNavigationBar extends StatefulWidget {
     this.selectedItemColor,
     this.unselectedItemColor,
   }) : super(key: key);
+
   @override
   _HomePageBottomNavigationBar createState() => _HomePageBottomNavigationBar();
 }
@@ -42,7 +43,6 @@ class _HomePageBottomNavigationBar extends State<HomePageBottomNavigationBar> {
     return Scaffold(
       appBar: widget.appBar,
       body: SafeArea(
-          minimum: EdgeInsets.symmetric(horizontal: 15),
           child: widget.pages != null
               ? widget.pages![_selectedIndex]
               : Center(child: Text('Page $_selectedIndex'))),
