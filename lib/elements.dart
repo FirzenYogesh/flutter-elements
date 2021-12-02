@@ -32,6 +32,7 @@ export 'src/widgets/list_view_tile.dart' show ListViewTile;
 export 'src/widgets/pages/bottom_navigation_bar.dart'
     show HomePageBottomNavigationBar;
 export 'src/widgets/pages/single_page.dart' show SinglePageHome;
+export 'src/widgets/appbar/sliding_app_bar.dart' show SlidingAppBar;
 
 class Elements {
   static Future<void> initialize() async {
